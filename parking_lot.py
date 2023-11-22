@@ -31,7 +31,7 @@ class ParkingLot:
 
     def map_vehicles(self):
         vehicle_mapping = {}
-        for index, license_plate in enumerate(self.available_spots, start=1):
+        for index, license_plate in enumerate(self.available_spots):
             if license_plate != "0":
                 vehicle_mapping[index] = license_plate
         return vehicle_mapping
