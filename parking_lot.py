@@ -24,7 +24,8 @@ class Car:
                 return (f"{self} parked successfully in spot {spot+1}")
             else:
                 print(
-                    f"The spot {spot + 1} is already occupied, when {self} tried to park. Already parked by {parking_lot.available_spots[spot]}")
+                    f"The spot {spot + 1} is already occupied, when {self} tried to park. Already parked by {parking_lot.available_spots[spot]}"
+                )
                 return self.park(parking_lot)
         except Exception as error:
             return ("Exception occured due to", str(error))
