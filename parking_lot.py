@@ -10,7 +10,7 @@ class Car:
     def __init__(self, license_plate):
         if len(str(license_plate)) != 7:
             raise ValueError("License plate must be a 7-digit number.")
-        self.license_plate = license_plate
+        self._license_plate = license_plate
 
     def __str__(self):
         return (f"Car with license plate {self.license_plate}")
@@ -24,10 +24,14 @@ class Car:
                 return (f"{self} parked successfully in spot {spot+1}")
             else:
                 print(
-                    f"The spot {spot + 1} is already occupied, when {self} tried to park. Already parked by {parking_lot.available_spots[spot]}")
+                    f"The spot {spot + 1} is already occupied, when {self} tried to park. Already parked by {parking_lot.available_spots[spot]}"
+                )
                 return self.park(parking_lot)
         except Exception as error:
             return ("Exception occured due to", str(error))
+    @property
+    def license_plate(self):
+        return self._license_plate
 
 
 class ParkingLot:
@@ -42,7 +46,7 @@ class ParkingLot:
         vehicle_mapping = {}
         for index, license_plate in enumerate(self.available_spots):
             if license_plate != "0":
-                vehicle_mapping[index] = license_plate
+                vehicle_mapping[index+1] = license_plate
         return (vehicle_mapping)
 
     @staticmethod
@@ -69,7 +73,7 @@ def main():
     )
     cars = [Car(''.join(random.choices(string.digits, k=7))) for _ in range(config.CAR_NUM)]
     if len(cars) > len(parking_lot.available_spots):
-        print("The number of cars are more than what can be occupied, so cars are occupied in FIFO basis")
+        print("The number of cars are more than what can be occupied, so cars are occupied on FIFO basis")
         cars = cars[:len(parking_lot.available_spots)]
     for car in cars:
         status = car.park(parking_lot)

@@ -1,8 +1,8 @@
 FILE = "parking_lot.json"
-CAR_NUM = 20
+CAR_NUM = 30
 LOT_SPACE = 2000
-HEIGHT = 12
-WIDTH = 8
+HEIGHT = 20
+WIDTH = 10
 AWS_SECRET_KEY = ""
 AWS_SECRET_ACCESS_KEY = ""
 REGION_NAME = "ap-south-1"
